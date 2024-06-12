@@ -1,35 +1,32 @@
-import { ClerkProvider } from "@clerk/nextjs";
-import { Inter } from "next/font/google";
+import { Footer } from '@/components/footer'
+import { Navbar } from '@/components/navbar'
+import { ModalProvider } from '@/providers/modal-provider'
+import { ToastProvider } from '@/providers/toast-provider'
+import type { Metadata } from 'next'
+import { Urbanist } from 'next/font/google'
+import './globals.css'
 
-import { ModalProvider } from "@/providers/modal-provider";
-import { ToastProvider } from "@/providers/toast-provider";
-import { ThemeProvider } from "@/providers/theme-provider";
+const urbanist = Urbanist({ subsets: ['latin'] })
 
-import "./globals.css";
+export const metadata: Metadata = {
+  title: 'Store',
+  description: 'Store',
+}
 
-const inter = Inter({ subsets: ["latin"] });
-
-export const metadata = {
-  title: "Dashboard",
-  description: "E-Commerce Dashboard",
-};
-
-export default async function RootLayout({
+export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode;
+  children: React.ReactNode
 }) {
   return (
-    <ClerkProvider>
-      <html lang="en">
-        <body className={inter.className}>
-          <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-            <ToastProvider />
-            <ModalProvider />
-            {children}
-          </ThemeProvider>
-        </body>
-      </html>
-    </ClerkProvider>
-  );
+    <html lang="en">
+      <body className={urbanist.className}>
+        <ModalProvider />
+        <ToastProvider />
+        <Navbar />
+        {children}
+        <Footer />
+      </body>
+    </html>
+  )
 }
