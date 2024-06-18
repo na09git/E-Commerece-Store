@@ -5,7 +5,7 @@ export const Footer = () => {
     <footer className="bg-white border-t">
       <div className="mx-auto py-10">
         <p className="text-center text-xs text-black">
-          &copy; {year} Rocha Madrid Sports - Todos os direitos reservados
+          &copy; {year} AnaMart - All Right Reserved!
         </p>
       </div>
     </footer>
